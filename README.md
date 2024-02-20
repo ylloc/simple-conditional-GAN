@@ -12,3 +12,5 @@ image = G(noise, torch.LongTensor([9])).reshape(28, 28).detach().cpu().numpy()
 plt.imshow(image)
 plt.show()
 ```
+
+![alt text](example/nine.png)
