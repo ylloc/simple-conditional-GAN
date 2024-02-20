@@ -89,7 +89,7 @@ if __name__ == "__main__":
             for _ in range(TIMES):
                 d_optim.zero_grad()
                 """
-                loss_D = E_{x ~ real} [log(D(x))] + E_{x ~ fake} [log(1 - D(x))
+                loss_D = E_{x ~ real} [log(D(x))] + E_{x ~ fake} [log(1 - D(x))]
                 """
                 real_out = D(real_images, labels)
                 loss_real = loss_fn(real_out, torch.Tensor(torch.ones(BATCH_SIZE)).cuda())
