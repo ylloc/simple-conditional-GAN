@@ -86,7 +86,6 @@ if __name__ == "__main__":
         pbar.update(1)
         for i, (images, labels) in enumerate(data_loader):
             real_images, labels = torch.Tensor(images).cuda(), torch.Tensor(labels).cuda()
-
             for _ in range(TIMES):
                 d_optim.zero_grad()
                 """
@@ -94,7 +93,6 @@ if __name__ == "__main__":
                 """
                 real_out = D(real_images, labels)
                 loss_real = loss_fn(real_out, torch.Tensor(torch.ones(BATCH_SIZE)).cuda())
-
                 noice = torch.Tensor(torch.randn(BATCH_SIZE, 100)).cuda()
                 fake_labels = torch.Tensor(torch.LongTensor(np.random.randint(0, 10, BATCH_SIZE))).cuda()
                 fake_images = G(noice, fake_labels)
@@ -103,8 +101,6 @@ if __name__ == "__main__":
                 d_loss = loss_real + loss_fake
                 d_loss.backward()
                 d_optim.step()
-
-
             """
             loss_G = E_{z ~ p(z)} [-log(D(G(z)))]
             """
